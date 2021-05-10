@@ -1,6 +1,6 @@
 # Human Resources Management System
 
-[PostgreSQL](https://github.com/canpolatt/JavaReactHomework6-1)
+## [PostgreSQL](https://github.com/canpolatt/JavaReactHomework6-1)
 
 **Spring - JavaSE-11 based.**
 * Dependencies

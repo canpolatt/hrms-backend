@@ -9,6 +9,7 @@
   * Spring Data JPA
   * PostgreSQL Driver
   * Lombok
+  * Swagger
 
 ### ER Diagram with PostgreSQL
 ![Er Diagram](/er_diagram.png)

@@ -1,7 +1,5 @@
 # Human Resources Management System
 
-<a href="https://github.com/canpolatt/JavaReactHomework6-1">PostgreSQL</a>
-
 <p align="center">
 
  <a href="https://github.com/canpolatt/HRMS">
@@ -31,10 +29,6 @@
 
 
 
-
-
-
-
 **Spring - JavaSE-11 based.**
 * Dependencies
   * Spring Boot DevTools
@@ -46,6 +40,7 @@
   * Springfox Swagger UI
 
 ### ER Diagram with PostgreSQL
+<a href="https://github.com/canpolatt/JavaReactHomework6-1">PostgreSQL Script</a>
 ![Er Diagram](/er_diagram.png)
 
 

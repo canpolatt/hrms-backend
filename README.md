@@ -5,7 +5,7 @@
 <p align="center">
 
  <a href="https://github.com/canpolatt/HRMS">
-    <img src="https://www.hrkatha.com/wp-content/uploads/HRMS.png" alt="HRMS Project" width="30%">
+    <img src="https://cdn.hrpayrollsystems.net/wp-content/uploads/2019/04/hrms.jpg" alt="HRMS Project" width="50%">
   </a>
 <h2 align="center">HRMS Project</h2>
 <p align="center">

@@ -21,8 +21,8 @@
 # About the Project
 
 ## Built with
-<a href="https://www.java.com/tr/"><img src="https://user-images.githubusercontent.com/61492486/120069442-ae793480-c08e-11eb-8a09-d9c9d4775d18.png" width="45px"></img></a>
-<a href="https://spring.io/"><img src="https://user-images.githubusercontent.com/61492486/120069606-71617200-c08f-11eb-924d-310d7ac4acf2.png" width="45px"></img></a>
+<a href="https://www.java.com/tr/"><img src="https://user-images.githubusercontent.com/61492486/120069442-ae793480-c08e-11eb-8a09-d9c9d4775d18.png" width="70px"></img></a>
+<a href="https://spring.io/"><img src="https://user-images.githubusercontent.com/61492486/120069606-71617200-c08f-11eb-924d-310d7ac4acf2.png" width="70px"></img></a>
 
 
 

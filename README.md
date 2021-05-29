@@ -21,7 +21,7 @@
 # About the Project
 
 ## Built with
-<img src="https://www.pngfind.com/pngs/m/53-535670_spring-framework-logo-spring-boot-hd-png-download.png" width="45px"></img>
+<img src="https://www.pngfind.com/pngs/m/53-535670_spring-framework-logo-spring-boot-hd-png-download.png" width="50%"></img>
 
 
 **Spring - JavaSE-11 based.**

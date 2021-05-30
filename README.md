@@ -41,7 +41,7 @@
   * GlassFish
 
 ### ER Diagram with PostgreSQL
-<a href="https://github.com/canpolatt/JavaReactHomework6-1">PostgreSQL Script</a>
+<a href="https://github.com/canpolatt/HRMS/blob/master/HrmsDatabase.sql">PostgreSQL Script</a>
 
 ![Er Diagram](/er_diagram.png)
 

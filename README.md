@@ -36,6 +36,9 @@
   * Lombok
   * Springfox Swagger
   * Springfox Swagger UI
+  * Java Bean Validation
+  * Hibernate Validator
+  * GlassFish
 
 ### ER Diagram with PostgreSQL
 <a href="https://github.com/canpolatt/JavaReactHomework6-1">PostgreSQL Script</a>

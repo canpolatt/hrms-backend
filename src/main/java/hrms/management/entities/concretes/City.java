@@ -3,26 +3,29 @@ package hrms.management.entities.concretes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name="job_titles")
 @Data
-@AllArgsConstructor
+@Entity
+@EqualsAndHashCode(callSuper = false)
+@Table(name="cities")
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisement"})
-public class JobTitle {
+public class City {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
-    @Column(name="title")
-    private String jobTitle;
+    @Column(name="city_name")
+    private String cityName;
 
-    @OneToMany(mappedBy = "jobTitle")
+    @OneToMany(mappedBy = "city")
     private List<JobAdvertisement> jobAdvertisement;
+
 }

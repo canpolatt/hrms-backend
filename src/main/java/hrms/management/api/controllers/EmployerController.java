@@ -4,7 +4,9 @@ import hrms.management.business.abstracts.EmployerService;
 import hrms.management.core.utilities.results.DataResult;
 import hrms.management.core.utilities.results.Result;
 import hrms.management.entities.concretes.Employer;
+import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,12 +22,21 @@ public class EmployerController {
     }
 
     @GetMapping("/getall")
-    public DataResult<List<Employer>> getAll(){
-        return employerService.getAll();
+    public ResponseEntity<?> getAll(){
+        var result=this.employerService.getAll();
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody Employer employer) {
-        return employerService.add(employer);
+    public ResponseEntity<?> add(@RequestBody Employer employer) {
+        var result=this.employerService.add(employer);
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
+
     }
 }

@@ -5,6 +5,7 @@ import hrms.management.core.utilities.results.DataResult;
 import hrms.management.core.utilities.results.Result;
 import hrms.management.entities.concretes.JobAdvertisement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,43 +21,75 @@ public class JobAdvertisementController {
     }
 
     @GetMapping("/getAll")
-    DataResult<List<JobAdvertisement>> getAll(){
-        return this.jobAdvertisementService.getAll();
+    public ResponseEntity<?> getAll(){
+        var result=this.jobAdvertisementService.getAll();
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getByActiveStatusTrue")
-    DataResult<List<JobAdvertisement>> getByActiveStatusTrue(){
-        return this.jobAdvertisementService.getByActiveStatusTrue();
+    public ResponseEntity<?>  getByActiveStatusTrue(){
+        var result=this.jobAdvertisementService.getByActiveStatusTrue();
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getAllSortedByOldestDate")
-    DataResult<List<JobAdvertisement>> getAllSortedByOldestDate(){
-        return this.jobAdvertisementService.getAllSortedByOldestDate();
+    public ResponseEntity<?>  getAllSortedByOldestDate(){
+        var result=this.jobAdvertisementService.getAllSortedByOldestDate();
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getAllSortedByNewestDate")
-    DataResult<List<JobAdvertisement>> getAllSortedByNewestDate(){
-        return this.jobAdvertisementService.getAllSortedByNewestDate();
+    public ResponseEntity<?> getAllSortedByNewestDate(){
+        var result=this.jobAdvertisementService.getAllSortedByNewestDate();
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/getByEmployer_IdAndActiveStatusTrue")
-    DataResult<List<JobAdvertisement>>getByEmployer_IdAndActiveStatusTrue(@RequestParam Integer employerId){
-        return this.jobAdvertisementService.getByEmployer_IdAndActiveStatusTrue(employerId);
+    public ResponseEntity<?>getByEmployer_IdAndActiveStatusTrue(@RequestParam Integer employerId){
+        var result=this.jobAdvertisementService.getByEmployer_IdAndActiveStatusTrue(employerId);
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/add")
-    Result add(@RequestBody JobAdvertisement jobAdvertisement){
-        return jobAdvertisementService.add(jobAdvertisement);
+    public ResponseEntity<?> add(@RequestBody JobAdvertisement jobAdvertisement){
+        var result=this.jobAdvertisementService.add(jobAdvertisement);
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @DeleteMapping("/delete")
-    Result delete(@RequestBody JobAdvertisement jobAdvertisement){
-        return jobAdvertisementService.delete(jobAdvertisement);
+    public ResponseEntity<?> delete(@RequestBody JobAdvertisement jobAdvertisement){
+        var result=this.jobAdvertisementService.delete(jobAdvertisement);
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @PutMapping("/update")
-    Result update(@RequestBody JobAdvertisement jobAdvertisement){
-        return jobAdvertisementService.update(jobAdvertisement);
+    public ResponseEntity<?> update(@RequestBody JobAdvertisement jobAdvertisement){
+        var result=this.jobAdvertisementService.update(jobAdvertisement);
+        if(!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
     }
 
 }

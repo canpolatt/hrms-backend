@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -17,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="candidates")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
 public class Candidate extends User {
 
     @Column(name="first_name")
@@ -34,5 +35,6 @@ public class Candidate extends User {
 
     @Column(name="date_of_birth")
     private Date birthDate;
+
 
 }

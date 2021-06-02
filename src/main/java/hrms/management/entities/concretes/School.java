@@ -1,6 +1,7 @@
 package hrms.management.entities.concretes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="schools")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculumVitae"})
 public class School {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +22,7 @@ public class School {
     private int id;
 
     @ManyToOne(targetEntity = CurriculumVitae.class)
-    @JoinColumn(name="curriculum_vitae_id")
+    @JoinColumn(name="curriculum_vitae_id",referencedColumnName =  "id" ,nullable = false)
     private CurriculumVitae curriculumVitae;
 
     @Column(name="school_name")

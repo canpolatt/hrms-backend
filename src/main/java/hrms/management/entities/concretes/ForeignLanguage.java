@@ -1,6 +1,7 @@
 package hrms.management.entities.concretes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import javax.validation.constraints.Min;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="foreign_languages")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","curriculumVitae"})
 public class ForeignLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +23,7 @@ public class ForeignLanguage {
     private int id;
 
     @ManyToOne(targetEntity = CurriculumVitae.class)
-    @JoinColumn(name="curriculum_vitae_id")
+    @JoinColumn(name="curriculum_vitae_id",referencedColumnName =  "id" ,nullable = false)
     private CurriculumVitae curriculumVitae;
 
     @Column(name="language")

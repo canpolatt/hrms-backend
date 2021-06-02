@@ -22,8 +22,8 @@ public class CurriculumVitae {
     @Column(name="id")
     private int id;
 
-    @ManyToOne(targetEntity = Candidate.class)
-    @JoinColumn(name = "candidate_id", referencedColumnName =  "id" ,nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "candidate_id")
     private Candidate candidate;
 
     @Column(name="github_address")
@@ -46,7 +46,7 @@ public class CurriculumVitae {
 
     @OneToMany(mappedBy = "curriculumVitae")
     private List<ForeignLanguage> foreignLanguages;
-    //
+
 
 
 }

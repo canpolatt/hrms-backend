@@ -18,7 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="candidates")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","candidate"})
 public class Candidate extends User {
 
     @Column(name="first_name")
@@ -27,7 +26,7 @@ public class Candidate extends User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="image_url")
+    @Column(name = "image_url")
     private String imageUrl;
 
     @Column(name="identity_number")
@@ -36,5 +35,8 @@ public class Candidate extends User {
     @Column(name="date_of_birth")
     private Date birthDate;
 
+    @OneToMany(mappedBy = "candidate")
+    @JsonIgnore
+    private List<CurriculumVitae> curriculumVitae;
 
 }

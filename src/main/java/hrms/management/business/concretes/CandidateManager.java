@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -41,13 +42,18 @@ public class CandidateManager implements CandidateService {
     }
 
     @Override
-    public DataResult<Candidate> imageUpload(int candidateId, MultipartFile file) {
+    public DataResult<Candidate> imageUpload(int candidateId, MultipartFile file) throws IOException{
         var candidate=this.candidateDao.getById(candidateId);
-        var result=RunRules.run(uploadImageToCloudinary(file),checkCandidateExists(candidate));
+        var imageUrl=uploadImageToCloudinary(file,candidate.getImageUrl());
+        var result=RunRules.run(checkCandidateExists(candidate));
         if(!result.isSuccess()){
             return new ErrorDataResult<>(null,result.getMessage());
         }
-        return null;
+        if (!imageUrl.isSuccess()){
+            return new ErrorDataResult<>(null, imageUrl.getMessage());
+        }
+        candidate.setImageUrl(imageUrl.getMessage());
+        return new SuccessDataResult<>(this.candidateDao.save(candidate));
     }
 
 //------------------------------------------------------------------------------------------------------------------
@@ -59,9 +65,17 @@ public class CandidateManager implements CandidateService {
         return new SuccessResult();
     }
 
-    private  Result uploadImageToCloudinary( MultipartFile file){
-        var result = this.imageService.save(file);
-        return new SuccessResult();
+    private  Result uploadImageToCloudinary( MultipartFile file, String imageUrl) throws IOException {
+        var result = this.imageService.upload(file);
+        if(!result.isSuccess()){
+            return new ErrorResult(result.getMessage());
+        }
+        if(imageUrl != null){
+            var imageId = imageUrl.split(("/"))[imageUrl.split(("/")).length - 1].split("\\.")[0];
+            this.imageService.delete(imageId);
+        }
+        var url = result.getData().get("url");
+        return new SuccessResult(url.toString());
     }
     private Result identityNumberControl(Candidate candidate) {
 

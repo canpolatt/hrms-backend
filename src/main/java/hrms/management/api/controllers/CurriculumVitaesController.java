@@ -36,6 +36,15 @@ public class CurriculumVitaesController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getByCandidate")
+    public ResponseEntity<?> getByCandidate(@RequestParam int id){
+        var result = this.curriculumVitaeService.getByCandidate_CandidateId(id);
+        if (!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return ResponseEntity.ok(result);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody CurriculumVitae curriculumVitae){
         var result = this.curriculumVitaeService.add(curriculumVitae);
@@ -44,6 +53,8 @@ public class CurriculumVitaesController {
         }
         return ResponseEntity.ok(result);
     }
+
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorDataResult<Object> handleValidationException

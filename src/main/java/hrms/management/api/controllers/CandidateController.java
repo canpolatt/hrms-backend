@@ -7,7 +7,9 @@ import hrms.management.entities.concretes.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -36,5 +38,20 @@ public class CandidateController {
             return ResponseEntity.badRequest().body(result);
         }
         return ResponseEntity.ok(result);
+    }
+    @PostMapping("uploadImage")
+    public ResponseEntity<?> uploadImage(@RequestParam int candidateId, @RequestParam MultipartFile file){
+        DataResult result = null ;
+        try {
+            result = this.candidateService.imageUpload(candidateId,file);
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        if (!result.isSuccess()){
+            return ResponseEntity.badRequest().body(result);
+        }
+        return  ResponseEntity.ok(result);
     }
 }

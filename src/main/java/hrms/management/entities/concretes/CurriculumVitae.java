@@ -5,13 +5,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="curriculum_vitaes")
@@ -38,15 +41,13 @@ public class CurriculumVitae {
     @Column(name="cover_letter")
     private String coverLetter;
 
-    @OneToMany(mappedBy = "curriculumVitae")
-    private List<JobExperience> jobExperiences;
+    @OneToMany(mappedBy = "curriculumVitae",fetch = FetchType.LAZY)
+    private List<JobExperience> jobExperiences=new ArrayList<>();
 
-   @OneToMany(mappedBy = "curriculumVitae")
-    private List<School> schools;
+   @OneToMany(mappedBy = "curriculumVitae",fetch = FetchType.LAZY)
+    private List<School> schools=new ArrayList<>();
 
-    @OneToMany(mappedBy = "curriculumVitae")
-    private List<ForeignLanguage> foreignLanguages;
-
-
-
+    @OneToMany(mappedBy = "curriculumVitae",fetch = FetchType.LAZY)
+    private List<ForeignLanguage> foreignLanguages=new ArrayList<>();
+//DTO YAZ
 }
